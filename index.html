@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07111f" />
+    <title>Aegis | Security Operations Console</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Navegación principal">
+        <a class="brand" href="#overview"><span class="brand-mark">A</span><span>AEGIS<small>SECURITY OPS</small></span></a>
+        <nav>
+          <a class="nav-link active" href="#overview"><span>◈</span>Resumen</a>
+          <a class="nav-link" href="#threats"><span>◇</span>Amenazas <b>03</b></a>
+          <a class="nav-link" href="#terminal"><span>›_</span>Terminal</a>
+          <a class="nav-link" href="#scripts"><span>⌘</span>Scripts</a>
+        </nav>
+        <div class="sidebar-foot"><span class="pulse-dot"></span> Sistema protegido<br /><small>Última sincronización: ahora</small></div>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <div><p class="eyebrow">CENTRO DE OPERACIONES</p><h1>Visibilidad que anticipa.</h1></div>
+          <div class="top-actions"><button class="icon-button" id="themeButton" aria-label="Cambiar contraste">☼</button><button class="profile" aria-label="Perfil de analista">MS</button></div>
+        </header>
+
+        <section class="hero" id="overview">
+          <div class="hero-copy"><span class="live-label"><i></i> MONITOREO ACTIVO</span><h2>Defiende tu<br /><em>superficie de ataque.</em></h2><p>Observabilidad, detección y respuesta en una única consola diseñada para equipos de seguridad modernos.</p><div class="hero-actions"><a class="button primary" href="#terminal">Abrir terminal <span>→</span></a><a class="button ghost" href="#scripts">Explorar scripts</a></div></div>
+          <div class="radar-wrap" aria-label="Radar de seguridad mostrando la red protegida"><div class="radar"><div class="radar-sweep"></div><span class="radar-ring ring-1"></span><span class="radar-ring ring-2"></span><span class="radar-ring ring-3"></span><i class="blip b1"></i><i class="blip b2"></i><i class="blip b3"></i><div class="radar-core">✓</div></div><div class="radar-note"><span class="pulse-dot"></span> 124 activos monitorizados</div></div>
+        </section>
+
+        <section class="metric-grid" aria-label="Métricas de seguridad">
+          <article class="metric-card"><span class="metric-icon cyan">⌁</span><p>EVENTOS ANALIZADOS</p><strong data-count="24819">0</strong><small class="up">↑ 12.4% <i>vs. ayer</i></small></article>
+          <article class="metric-card"><span class="metric-icon violet">◉</span><p>RIESGO PROMEDIO</p><strong>24<span>/100</span></strong><small class="down">↓ 8.2% <i>vs. ayer</i></small></article>
+          <article class="metric-card"><span class="metric-icon amber">△</span><p>ALERTAS ABIERTAS</p><strong data-count="3">0</strong><small class="neutral">1 requiere revisión</small></article>
+          <article class="metric-card"><span class="metric-icon green">✓</span><p>CONTROLES SANOS</p><strong>98.7<span>%</span></strong><small class="up">↑ 0.6% <i>esta semana</i></small></article>
+        </section>
+
+        <section class="dashboard-grid" id="threats">
+          <article class="panel activity-panel"><div class="panel-heading"><div><p class="eyebrow">TELEMETRÍA</p><h3>Actividad de amenazas</h3></div><div class="range-switch" role="group" aria-label="Rango de actividad"><button>24H</button><button class="selected">7D</button><button>30D</button></div></div><canvas id="threatChart" aria-label="Gráfico de actividad durante siete días"></canvas><div class="chart-legend"><span><i class="legend cyan-dot"></i>Eventos detectados</span><span><i class="legend violet-dot"></i>Eventos bloqueados</span></div></article>
+          <article class="panel posture-panel"><div class="panel-heading"><div><p class="eyebrow">POSTURA</p><h3>Estado de protección</h3></div><button class="more-button" aria-label="Más opciones">•••</button></div><div class="posture-content"><div class="score"><svg viewBox="0 0 120 120"><circle class="score-track" cx="60" cy="60" r="50"/><circle class="score-value" cx="60" cy="60" r="50"/></svg><div><strong>87</strong><span>/100</span></div></div><div><h4>Postura sólida</h4><p>Tu infraestructura mantiene una exposición reducida.</p><a href="#scripts">Ver recomendaciones →</a></div></div><div class="progress-list"><div><span>Hardening del sistema</span><b>92%</b></div><div class="progress"><i style="width:92%"></i></div><div><span>Integridad de archivos</span><b>84%</b></div><div class="progress"><i style="width:84%"></i></div></div></article>
+        </section>
+
+        <section class="lower-grid">
+          <article class="panel terminal-panel" id="terminal"><div class="panel-heading"><div><p class="eyebrow">SANDBOX SEGURO</p><h3>Terminal simulada</h3></div><span class="terminal-status">● conectado</span></div><div class="terminal-window"><div class="term-bar"><span></span><span></span><span></span><b>analyst@aegis:~</b></div><div class="terminal-output" id="terminalOutput" aria-live="polite"></div><form id="terminalForm"><span>analyst@aegis:~$</span><input id="terminalInput" autocomplete="off" aria-label="Comando simulado" placeholder="escribe 'help' para empezar" /></form></div><p class="hint">Prueba: <button data-command="status">status</button> <button data-command="scan --quick">scan --quick</button> <button data-command="help">help</button></p></article>
+          <article class="panel alerts-panel"><div class="panel-heading"><div><p class="eyebrow">PRIORIZACIÓN</p><h3>Alertas recientes</h3></div><a href="#threats">Ver todas</a></div><div class="alerts"><div class="alert-row"><span class="severity high"></span><div><b>Intentos SSH anómalos</b><small>192.168.1.44 · hace 4 min</small></div><strong>ALTO</strong></div><div class="alert-row"><span class="severity medium"></span><div><b>Paquete sin firma detectado</b><small>host-prod-02 · hace 18 min</small></div><strong>MEDIO</strong></div><div class="alert-row"><span class="severity low"></span><div><b>Escaneo de puertos bloqueado</b><small>gateway-edge · hace 32 min</small></div><strong>BAJO</strong></div></div></article>
+        </section>
+
+        <section class="scripts-section" id="scripts"><div class="section-title"><div><p class="eyebrow">AUTOMATIZACIÓN</p><h3>Scripts operativos</h3></div><p>Herramientas Bash reproducibles para reforzar y auditar Linux.</p></div><div class="script-grid"><a class="script-card" href="scripts/audit.sh"><span>01</span><h4>Auditoría rápida</h4><p>Revisa exposición, servicios y configuración base.</p><b>audit.sh →</b></a><a class="script-card" href="scripts/hardening.sh"><span>02</span><h4>Hardening guiado</h4><p>Aplica controles con confirmación explícita.</p><b>hardening.sh →</b></a><a class="script-card" href="scripts/integrity-check.sh"><span>03</span><h4>Integridad</h4><p>Verifica cambios en rutas sensibles del sistema.</p><b>integrity-check.sh →</b></a></div></section>
+      </section>
+    </main>
+    <footer>AEGIS SECURITY OPERATIONS <span>•</span> Construido para defensores</footer>
+    <script src="assets/js/dashboard.js"></script>
+  </body>
+</html>
